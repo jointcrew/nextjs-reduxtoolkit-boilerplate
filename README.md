@@ -42,6 +42,7 @@ pages/index.tsx
 
 
 ## TODO
+- リセットスタイルの適用
 - テストの導入
   - UT: jest
   - VRT: [Storybook](https://storybook.js.org/docs/testing/automated-visual-testing/)
