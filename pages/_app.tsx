@@ -1,12 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { AppProps } from 'next/app'
-import withRedux from 'next-redux-wrapper'
-import { makeStore } from '~/store/rootStore'
+import { wrapper } from '~/store/rootStore'
 
-const WrappedApp = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />
-}
+const WrappedApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => <Component {...pageProps} />
 
-export default withRedux(makeStore, {
-  debug: process.env.NODE_ENV === 'development',
-})(WrappedApp)
+export default wrapper.withRedux(WrappedApp)
