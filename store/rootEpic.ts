@@ -1,4 +1,5 @@
 import { createEpicMiddleware, combineEpics } from 'redux-observable'
+
 import GoogleBookEpics from './googleBooks/epics'
 
 export const rootEpic = combineEpics(...GoogleBookEpics)

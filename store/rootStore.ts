@@ -1,4 +1,5 @@
 import { configureStore, Middleware } from '@reduxjs/toolkit'
+
 import { MakeStore, createWrapper } from 'next-redux-wrapper'
 import { createLogger } from 'redux-logger'
 
@@ -12,12 +13,11 @@ const onlyDevMiddlewares = new Array<Middleware>()
 if (process.env.NODE_ENV === `development`) {
   onlyDevMiddlewares.push(logger)
 }
-
 export const setupStore = (preloadedState: any) => {
   const store = configureStore({
     reducer: rootReducer,
-    devTools: process.env.NODE_ENV !== 'production',
     preloadedState,
+    devTools: process.env.NODE_ENV !== 'production',
     middleware: [...onlyDevMiddlewares, epicMiddleware],
   })
   epicMiddleware.run(rootEpic)

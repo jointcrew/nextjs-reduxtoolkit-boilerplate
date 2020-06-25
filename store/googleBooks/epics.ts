@@ -25,19 +25,14 @@ export const fetchGoogleBookEpic: Epic = (action$) =>
     switchMap((action: PayloadAction<{ searchText: string }>) =>
       HttpService.GetAsync<{ q: string }, VolumeList>('volumes', { q: action.payload.searchText }).pipe(
         mergeMap((res) => {
-          return of(
-            GoogleBooksActions.fetchVolumesSuccess({
-              isSearching: false,
-              volumeList: res.data,
-            }),
-          )
+          return of(GoogleBooksActions.fetchVolumesSuccess({ volumeList: res.data }))
         }),
         catchError((error: AxiosError) => {
-          return of(GoogleBooksActions.fetchVolumesFailure({ isSearching: false }))
+          return of(GoogleBooksActions.fetchVolumesFailure({ error: error.message }))
         }),
         takeUntil(action$.ofType(GoogleBooksActions.stopFetchVolumes)),
       ),
     ),
   )
 
-export default [fetchGoogleBookEpic]
+export default [initEpic, fetchGoogleBookEpic]

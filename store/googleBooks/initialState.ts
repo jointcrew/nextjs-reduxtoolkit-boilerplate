@@ -7,4 +7,5 @@ export const initialState: State = {
     totalItems: 0,
     items: [],
   },
+  error: '',
 }
