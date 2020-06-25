@@ -12,15 +12,16 @@ open http://localhost:3000
 ## ディレクトリ
 ```
 .
-├── components // View: 原則ステートを持たない
-├── containers // Controller: Atomicデザイン採用の場合は、organismsまでのコンテナ化を許容
+├── components // View: 純粋な見た目のコンポーネント/原則ステートは持たない
+├── containers // Controller: データ操作/状態管理/依存関係/ライフサイクル制御/スタイルやViewは一切持たない
 ├── pages // 公開ページ
 ├── public // 静的公開ファイル
 ├── store // グローバルな状態管理（Model）
 ├── services // モデル操作・APIクライアント
 ├── styles // 共通スタイル
 ├── types // 型定義ファイル(型定義は全てここで管理)
-└── utils // 便利関数
+├── hooks // カスタムHooks
+└── utils // 共通に利用する純粋関数
 
 
 ```
@@ -42,6 +43,12 @@ pages/index.tsx
 
 
 ## TODO
+- `redux-observable | WARNING: this middleware is already associated with a store. createEpicMiddleware should be called for every store.` の解消
+- `4. WrappedApp created new store with withRedux(WrappedApp) { initialState: undefined,
+  initialStateFromGSPorGSSR: undefined }` の解消
+  - どちらもリロードすると出る
+  - 見てる：https://github.com/redux-observable/redux-observable/issues/635
+  - 見てる：https://github.com/redux-observable/redux-observable/pull/539
 - リセットスタイルの適用
 - テストの導入
   - UT: jest
