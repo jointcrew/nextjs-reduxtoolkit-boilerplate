@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Link from 'next/link'
 
-import { SearchResult } from './SearchResult'
+import SearchResult from './SearchResult'
 import { Props } from '~/types/components/GoogleBooks'
 
-export const GoogleBooksComponent: React.FC<Props> = (props: Props) => {
+const GoogleBooksComponent: React.FC<Props> = (props: Props) => {
   return (
     <div>
       <h1>GoogleBooks Page</h1>
@@ -22,3 +22,5 @@ export const GoogleBooksComponent: React.FC<Props> = (props: Props) => {
     </div>
   )
 }
+
+export default memo(GoogleBooksComponent)

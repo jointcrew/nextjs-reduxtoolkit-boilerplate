@@ -1,7 +1,7 @@
 export type VolumeList = {
   kind: string
   totalItems: number
-  items: Volume[]
+  items?: Volume[]
 }
 
 export type Volume = {
