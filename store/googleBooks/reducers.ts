@@ -1,7 +1,7 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit'
 import { produce } from 'immer'
 
-import { State } from './types'
+import { State } from '~/types/stores/googleBooks/state'
 import { initialState } from './initialState'
 
 export const setIsSearching: CaseReducer<State, PayloadAction<State>> = (state, action) => {
